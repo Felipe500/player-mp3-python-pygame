@@ -90,18 +90,24 @@ def iniciar():
         global volume
         global fre
         global musicas
-        if mixer.init:
+        global inicializou
+        tocando = mixer_music.get_busy()
+        if tocando==False:
                 mixer.init()
                         
-        print(mixer.get_init())
-        print(musicas[rodando])
-        musica = mixer_music.load(musicas[rodando])
+                print(mixer.get_init())
+                x = mixer_music.get_busy()
+                print(musicas[rodando])
+                musica = mixer_music.load(musicas[rodando])
+                
+                mixer_music.set_volume(volume)
+                mixer_music.play()
+                mixer.music.pause()
+
+        else:
+            print("já inicializado")
         
-        mixer_music.set_volume(volume)
-        mixer_music.play()
-        x = mixer_music.get_busy()
-        if x==0:
-                print("mal mixado")
+        
                 
         print("frequênci atual:  ",fre)    
         print(rodando+1,' ',basename(musicas[rodando]))
@@ -119,14 +125,18 @@ def sair():
                 print("deseja sair mesmo...N/S ou s/n ")
                 print("Encerrando music_x player.....")
                 
-        
-def pausar():
-    mixer.music.pause()
-    print("(PAUSE)")
-    print("Pressione 'c' para continuar")
-def continua():
-    mixer_music.unpause()
-    print("Pressione 'c' para continuar")
+#=================================        
+#=================================
+def play_pause():
+
+    tocando = mixer_music.get_busy()
+    if tocando==False:
+        mixer_music.unpause()
+        print("Musica tocando")
+
+    else:
+        mixer_music.pause()
+        print("Musica em parad")
 
 def reinicio():
     mixer_music.rewind()        
