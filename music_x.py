@@ -44,10 +44,10 @@ while tocar==True:
 
     #PAUSAR AUDIO
     elif resp == 'p' or resp == 'P':
-        pausar()
+        play_pause()
     #CONTINUAR    
     elif resp == 'c' or resp == 'C':
-        continua()
+        play_pause()
 
     #Reiniciar
     elif resp == 'r' or resp == 'R':
@@ -99,6 +99,9 @@ while tocar==True:
     elif resp== 'atualizar' or 'update' or 'add':
         mixer.quit()
         varrer_mp3()
+
+    else:
+        pass
 
 
    
