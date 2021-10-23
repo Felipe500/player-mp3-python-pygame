@@ -126,6 +126,15 @@ def sair():
                 print("Encerrando music_x player.....")
                 
 #=================================        
+def pausar():
+    if mixer.music.play():
+        print("rodando musica vvvvvvv")
+    mixer.music.pause()
+    print("(PAUSE)")
+    print("Pressione 'c' para continuar")
+def continua():
+    mixer_music.unpause()
+    print("Pressione 'c' para continuar")
 #=================================
 def play_pause():
 
@@ -318,8 +327,7 @@ def ajuda():
         Para ver a lista de músicas digite --------mm
         Para avançar ----------------------------- >
         Para Voltar ------------------------------ <
-        Para pausar ------------------------------ p
-        Para continuar - ------------------------- c
+        Para pausar ou continuar ----------------- 'p' , 'c'
         Para selecionar por número --------------- start, iniciar
         Para sintonizar a frequência de som ------ fre
         Para controlar volume -------------------- diminuir(-,_) aumentar(=,+)
